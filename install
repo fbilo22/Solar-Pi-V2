@@ -1,0 +1,37 @@
+### Node Red
+TO BE COMPLETED
+
+Required nodes :
+node-red-contrib-influxdb
+node-red-dashboard
+node-red-node-pi-gpio
+
+### Influx DB install
+
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+ 
+echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+ 
+sudo apt update
+ 
+sudo apt install influxdb  
+ 
+sudo systemctl enable influxdb
+ 
+sudo systemctl start influxdb 
+
+#Create database called "measures"
+influx
+
+CREATE DATABASE solarpidb
+ 
+
+####Grafana install
+#default ID:PW is admin:admin
+wget https://github.com/fg2it/grafana-on-raspberry/releases/download/v5.1.4/grafana_5.1.4_armhf.deb
+ 
+sudo dpkg -i grafana_5.1.4_armhf.deb
+ 
+sudo systemctl enable grafana-server 
+ 
+sudo systemctl start grafana-server
